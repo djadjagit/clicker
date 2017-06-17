@@ -119,7 +119,7 @@ namespace clicker
                 {
                     int vkCode = Marshal.ReadInt32(lParam);
 //                    if ((vkCode > 36) && (vkCode < 41))
-                    if (vkCode > 10)
+                    if ((vkCode == 38) || (vkCode == 40) || (vkCode == 162) || (vkCode == 163))
                     {
                         KeyEventArgs key = new KeyEventArgs((Keys)vkCode);
                         KeyboardAction(null, key);
