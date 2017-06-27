@@ -2,6 +2,8 @@
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
+using System.IO;
+
 
 
 namespace clicker
@@ -76,7 +78,15 @@ namespace clicker
         {
             timer1.Enabled = false;
             i++;
-            mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, Cursor.Position.X, Cursor.Position.Y, 0, 0);
+            try
+            {
+                File.AppendAllText("log_clicker.txt", DateTime.Now.ToLongTimeString() + ":" + i.ToString() + "\n");
+                mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, Cursor.Position.X, Cursor.Position.Y, 0, 0);
+            }
+            catch (Exception err)
+            {
+                File.AppendAllText("log_clicker.txt", DateTime.Now.ToLongTimeString()+":"+err.Message + "\n");
+            }
             this.Text =i.ToString()+";"+ timer1.Interval.ToString() + ";" + flag.ToString() + "; X:" + Cursor.Position.X.ToString() +
                 "; Y:" + Cursor.Position.Y.ToString();
             notifyIcon1.Text = i.ToString() + ";" + timer1.Interval.ToString() + ";" + flag.ToString() + "; X:" + Cursor.Position.X.ToString() +
