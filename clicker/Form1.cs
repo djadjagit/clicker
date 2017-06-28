@@ -43,36 +43,32 @@ namespace clicker
                     i = 0;
                     timer1.Enabled = true;
                     notifyIcon1.Icon = Resource1.NormalIcon;
-                    toolStripTextBox1.Text = i.ToString() + ";" + timer1.Interval.ToString() + ";" + flag.ToString() + "; X:" + Cursor.Position.X.ToString() +
-                        "; Y:" + Cursor.Position.Y.ToString();
-                    notifyIcon1.Text = i.ToString() + ";" + timer1.Interval.ToString() + ";" + flag.ToString() + "; X:" + Cursor.Position.X.ToString() +
-                        "; Y:" + Cursor.Position.Y.ToString() + "\r\nВкл - правый Ctrl; Выкл - левый Ctrl";
+                    //                    toolStripTextBox1.Text = i.ToString() + ";" + timer1.Interval.ToString() + ";" + flag.ToString() + "; X:" + Cursor.Position.X.ToString() +
+                    //                        "; Y:" + Cursor.Position.Y.ToString();
+                    notifyIcon1.Text = "Интервал:" + timer1.Interval.ToString() + "\r\nВкл - правый Ctrl; Выкл - левый Ctrl";
                 }
                 if (e.KeyValue == 162) //левый Ctrl выключает кликалку
                 {
                     flag = 0;
                     timer1.Enabled = false;
                     notifyIcon1.Icon = Resource1.DeletedIcon;
-                    toolStripTextBox1.Text = i.ToString() + ";" + timer1.Interval.ToString() + ";" + flag.ToString() + "; X:" + Cursor.Position.X.ToString() +
-                        "; Y:" + Cursor.Position.Y.ToString();
-                    notifyIcon1.Text = i.ToString() + ";" + timer1.Interval.ToString() + ";" + flag.ToString() + "; X:" + Cursor.Position.X.ToString() +
-                        "; Y:" + Cursor.Position.Y.ToString() + "\r\nВкл - правый Ctrl; Выкл - левый Ctrl";
+                    //                    toolStripTextBox1.Text = i.ToString() + ";" + timer1.Interval.ToString() + ";" + flag.ToString() + "; X:" + Cursor.Position.X.ToString() +
+                    //                        "; Y:" + Cursor.Position.Y.ToString();
+                    notifyIcon1.Text = "Интервал:" + timer1.Interval.ToString() + "\r\nВкл - правый Ctrl; Выкл - левый Ctrl";
                 }
                 if (e.KeyValue == 38) //Up увеличивает интервал клика
                 {
                     timer1.Interval = timer1.Interval + 100;
-                    toolStripTextBox1.Text = i.ToString() + ";" + timer1.Interval.ToString() + ";" + flag.ToString() + "; X:" + Cursor.Position.X.ToString() +
-                        "; Y:" + Cursor.Position.Y.ToString();
-                    notifyIcon1.Text = i.ToString() + ";" + timer1.Interval.ToString() + ";" + flag.ToString() + "; X:" + Cursor.Position.X.ToString() +
-                        "; Y:" + Cursor.Position.Y.ToString() + "\r\nВкл - правый Ctrl; Выкл - левый Ctrl";
+                    //                    toolStripTextBox1.Text = i.ToString() + ";" + timer1.Interval.ToString() + ";" + flag.ToString() + "; X:" + Cursor.Position.X.ToString() +
+                    //                        "; Y:" + Cursor.Position.Y.ToString();
+                    notifyIcon1.Text = "Интервал:" + timer1.Interval.ToString() + "\r\nВкл - правый Ctrl; Выкл - левый Ctrl";
                 }
                 if (e.KeyValue == 40) //Down уменьшает интервал клика
                 {
                     timer1.Interval = timer1.Interval - 100;
-                    toolStripTextBox1.Text = i.ToString() + ";" + timer1.Interval.ToString() + ";" + flag.ToString() + "; X:" + Cursor.Position.X.ToString() +
-                        "; Y:" + Cursor.Position.Y.ToString();
-                    notifyIcon1.Text = i.ToString() + ";" + timer1.Interval.ToString() + ";" + flag.ToString() + "; X:" + Cursor.Position.X.ToString() +
-                        "; Y:" + Cursor.Position.Y.ToString() + "\r\nВкл - правый Ctrl; Выкл - левый Ctrl";
+                    //                    toolStripTextBox1.Text = i.ToString() + ";" + timer1.Interval.ToString() + ";" + flag.ToString() + "; X:" + Cursor.Position.X.ToString() +
+                    //                        "; Y:" + Cursor.Position.Y.ToString();
+                    notifyIcon1.Text = "Интервал:" + timer1.Interval.ToString() + "\r\nВкл - правый Ctrl; Выкл - левый Ctrl";
                 }
 
             }
@@ -88,12 +84,12 @@ namespace clicker
             i++;
             try
             {
-                File.AppendAllText("log_clicker.txt", DateTime.Now.ToLongTimeString() + ";" + i.ToString() + "\r\n");
+                File.AppendAllText("log_clicker.txt", DateTime.Now.ToLongTimeString() + ";" + i.ToString() + ";"+
+                 timer1.Interval.ToString() + "; X:" + Cursor.Position.X.ToString() +"; Y:" + Cursor.Position.Y.ToString()+ "\r\n");
                 mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, Cursor.Position.X, Cursor.Position.Y, 0, 0);
-                this.Text = i.ToString() + ";" + timer1.Interval.ToString() + ";" + flag.ToString() + "; X:" + Cursor.Position.X.ToString() +
-                    "; Y:" + Cursor.Position.Y.ToString();
-                notifyIcon1.Text = i.ToString() + ";" + timer1.Interval.ToString() + ";" + flag.ToString() + "; X:" + Cursor.Position.X.ToString() +
-                    "; Y:" + Cursor.Position.Y.ToString() + "\r\nВкл - правый Ctrl; Выкл - левый Ctrl";
+//                this.Text = i.ToString() + ";" + timer1.Interval.ToString() + ";" + flag.ToString() + "; X:" + Cursor.Position.X.ToString() +
+//                   "; Y:" + Cursor.Position.Y.ToString();
+                notifyIcon1.Text = "Интервал:" + timer1.Interval.ToString() + "\r\nВкл - правый Ctrl; Выкл - левый Ctrl";
             }
             catch (Exception err)
             {
@@ -168,10 +164,9 @@ namespace clicker
         private void Form1_Load(object sender, EventArgs e)
         {
             notifyIcon1.Icon = Resource1.DeletedIcon;
-            toolStripTextBox1.Text = i.ToString() + ";" + timer1.Interval.ToString() + ";" + flag.ToString() + "; X:" + Cursor.Position.X.ToString() +
-                "; Y:" + Cursor.Position.Y.ToString();
-            notifyIcon1.Text= i.ToString() + ";" + timer1.Interval.ToString() + ";" + flag.ToString() + "; X:" + Cursor.Position.X.ToString() +
-                "; Y:" + Cursor.Position.Y.ToString() + "\r\nВкл - правый Ctrl; Выкл - левый Ctrl";
+            //            toolStripTextBox1.Text = i.ToString() + ";" + timer1.Interval.ToString() + ";" + flag.ToString() + "; X:" + Cursor.Position.X.ToString() +
+            //                "; Y:" + Cursor.Position.Y.ToString();
+            notifyIcon1.Text = "Интервал:" + timer1.Interval.ToString() + "\r\nВкл - правый Ctrl; Выкл - левый Ctrl";
         }
 
         private void Form1_Activated(object sender, EventArgs e)
