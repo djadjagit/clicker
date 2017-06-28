@@ -24,6 +24,8 @@ namespace clicker
         public const UInt32 KEYEVENTF_KEYUP = 0x02;
         int flag = 0;
         Int32 i = 0;
+        int x = 0;
+        int y = 0;
 
         public Form1()
         {
@@ -41,6 +43,8 @@ namespace clicker
                 {
                     flag = 1;
                     i = 0;
+                    x = Cursor.Position.X;
+                    y = Cursor.Position.Y;
                     timer1.Enabled = true;
                     notifyIcon1.Icon = Resource1.NormalIcon;
                     //                    toolStripTextBox1.Text = i.ToString() + ";" + timer1.Interval.ToString() + ";" + flag.ToString() + "; X:" + Cursor.Position.X.ToString() +
@@ -84,6 +88,7 @@ namespace clicker
             i++;
             try
             {
+                SetCursorPos(x, y);
                 File.AppendAllText("log_clicker.txt", DateTime.Now.ToLongTimeString() + ";" + i.ToString() + ";"+
                  timer1.Interval.ToString() + "; X:" + Cursor.Position.X.ToString() +"; Y:" + Cursor.Position.Y.ToString()+ "\r\n");
                 mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, Cursor.Position.X, Cursor.Position.Y, 0, 0);
