@@ -142,7 +142,8 @@ namespace clicker
                     {
                         KeyEventArgs key = new KeyEventArgs((Keys)vkCode);
                         KeyboardAction(null, key);
-                        return (IntPtr)1;
+//                        return (IntPtr)1;
+                        return CallNextHookEx(_hookID, nCode, wParam, lParam);
                     }
                 }
                 return CallNextHookEx(_hookID, nCode, wParam, lParam);
